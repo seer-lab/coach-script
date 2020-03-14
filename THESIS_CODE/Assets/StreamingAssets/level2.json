@@ -1,0 +1,6 @@
+{
+    "Name": "Catch And Shot",
+    "Level": 2,
+    "CorrectOrder": ["Run();","Catch();", "Jump();", "Shoot();"],
+    "ScreenOrder": ["Jump();","Run();", "Shoot();","Catch();"]
+}

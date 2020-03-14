@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{447E29CF-25E6-4F1D-5951-3541BD66487A}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LevelOneProcess.cs">
+    <Files>
+      <File FileName="Assets/LevelOneProcess.cs" Line="31" Column="34" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

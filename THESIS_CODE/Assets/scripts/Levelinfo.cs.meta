@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: fe9d9e682cd5a47bdb72522a2adae312
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - code: {fileID: 7449647616585415855, guid: 208d4c960eec74b2a821b9eacb744b80, type: 3}
+  - drawerGO: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

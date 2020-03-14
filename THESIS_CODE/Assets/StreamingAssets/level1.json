@@ -1,0 +1,6 @@
+{
+    "Name": "JumpShot",
+    "Level": 1,
+    "CorrectOrder": ["Jump();", "Shoot();"],
+    "ScreenOrder": ["Jump();", "Shoot();"]
+}
