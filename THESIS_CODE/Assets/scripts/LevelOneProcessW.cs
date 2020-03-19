@@ -6,7 +6,7 @@ using System;
 using System.IO;
 using UnityEngine.Video;
 
-public class LevelOneProcess : MonoBehaviour
+public class LevelOneProcessW : MonoBehaviour
 {
     string Path;
     string jsonString;
@@ -21,34 +21,40 @@ public class LevelOneProcess : MonoBehaviour
     public VideoPlayer videoPlayer;
     public AudioSource audioSource;
 
-    public VideoClip clipone;
-    public VideoClip cliptwo;
-    public VideoClip mistake;
+    public VideoClip Wclipone;
+    public VideoClip Wcliptwo;
+    public VideoClip Wmistake;
+
+    List<string> codelist = new List<string>();
+
 
     // Start is called before the first frame update
-    public void Playvideo(List <string> codelist)
-    { 
-        StartCoroutine(PlayVideo(codelist));
+    public void Playvideo()
+    {
+        StartCoroutine(PlayVideo());
+
     }
 
 
-    IEnumerator PlayVideo(List<string> codelist)
+    IEnumerator PlayVideo()
     {
+
         foreach (string code in codelist)
         {
+   
+                if (code == "Jump();")
+                {
+                    videoPlayer.clip = Wclipone;
+                }
+                if (code == "Shoot();")
+                {
+                    videoPlayer.clip = Wcliptwo;
+                }
+                if (code == "Wrong();")
+                {
+                    videoPlayer.clip = Wmistake;
+                }
 
-            if (code == "Jump();")
-            {
-                videoPlayer.clip = clipone;
-            }
-            if (code == "Shoot();")
-            {
-                videoPlayer.clip = cliptwo;
-            }
-            else 
-            {
-                videoPlayer.clip = mistake;
-            }
 
             Debug.Log("code === " + code);
 
@@ -63,7 +69,7 @@ public class LevelOneProcess : MonoBehaviour
             rawImage.texture = videoPlayer.texture;
             videoPlayer.Play();
             audioSource.Play();
-            WaitForSeconds waitForSeconds2 = new WaitForSeconds(1);
+            WaitForSeconds waitForSeconds2 = new WaitForSeconds(3);
             while (videoPlayer.isPlaying)
             {
                 yield return waitForSeconds2;
@@ -71,6 +77,7 @@ public class LevelOneProcess : MonoBehaviour
             }
             videoPlayer.Stop();
             audioSource.Stop();
+
         }
     }
 
@@ -89,7 +96,7 @@ public class LevelOneProcess : MonoBehaviour
         string results = "";
         int i = 0;
 
-        var codelist = new List<string>();
+
 
 
         foreach (Transform child in blocks_t1)
@@ -117,8 +124,8 @@ public class LevelOneProcess : MonoBehaviour
             }
             else
             {
-               
-               //Debug.Log(blocks_t1[i].transform.GetComponentInChildren<Text>().text + "WRONG");
+
+                //Debug.Log(blocks_t1[i].transform.GetComponentInChildren<Text>().text + "WRONG");
                 //results = results + " \n" + blocks_t1[i].transform.GetComponentInChildren<Text>().text + " WRONG";
                 codelist.Add("Wrong();");
                 isCorrect = false;
@@ -128,8 +135,8 @@ public class LevelOneProcess : MonoBehaviour
             i++;
         }
 
-        Playvideo(codelist);
-           
+        Playvideo();
+
         /*
         changeText.text = results;
 
