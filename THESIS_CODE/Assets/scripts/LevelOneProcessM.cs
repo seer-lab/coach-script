@@ -29,14 +29,14 @@ public class LevelOneProcessM : MonoBehaviour
 
 
     // Start is called before the first frame update
-    public void Playvideo()
+    public void Playvideo(bool isCorrect)
     { 
-        StartCoroutine(PlayVideo());
+        StartCoroutine(PlayVideo(isCorrect));
 
     }
 
 
-    IEnumerator PlayVideo()
+    IEnumerator PlayVideo(bool isCorrect)
     {
 
         foreach (string code in codelist)
@@ -68,7 +68,7 @@ public class LevelOneProcessM : MonoBehaviour
             rawImage.texture = videoPlayer.texture;
             videoPlayer.Play();
             audioSource.Play();
-            WaitForSeconds waitForSeconds2 = new WaitForSeconds(3);
+            WaitForSeconds waitForSeconds2 = new WaitForSeconds(2);
             while (videoPlayer.isPlaying)
             {
                 yield return waitForSeconds2;
@@ -78,66 +78,6 @@ public class LevelOneProcessM : MonoBehaviour
             audioSource.Stop();  
 
         }
-    }
-
-
-    public void processlevel()
-    {
-        blocks_t1 = GetActionBlocks_MultiThreads("1");
-        bool isCorrect = false;
-        Path = Application.streamingAssetsPath + "/Level1.json";
-        jsonString = File.ReadAllText(Path);
-        Level1 Yumo = JsonUtility.FromJson<Level1>(jsonString);
-
-
-        string[] rightlist = Yumo.CorrectOrder;
-        List<string> blocks_names_t1 = new List<string>();
-        string results = "";
-        int i = 0;
-
-
-
-
-        foreach (Transform child in blocks_t1)
-        {
-            if (i == 0)
-            {
-                isCorrect = true;
-            }
-
-            if (i >= rightlist.Length)
-            {
-                //Debug.Log("WRONG");
-                //results = results + "\n " + blocks_t1[i].transform.GetComponentInChildren<Text>().text + " WRONG";
-                codelist.Add("Wrong();");
-                isCorrect = false;
-                break;
-            }
-            if (blocks_t1[i].transform.GetComponentInChildren<Text>().text == rightlist[i])
-            {
-
-                //Debug.Log(blocks_t1[i].transform.GetComponentInChildren<Text>().text + "CORRECT");
-                //results = results + "\n " + blocks_t1[i].transform.GetComponentInChildren<Text>().text + " CORRECT";
-                codelist.Add(blocks_t1[i].transform.GetComponentInChildren<Text>().text);
-
-            }
-            else
-            {
-               
-               //Debug.Log(blocks_t1[i].transform.GetComponentInChildren<Text>().text + "WRONG");
-                //results = results + " \n" + blocks_t1[i].transform.GetComponentInChildren<Text>().text + " WRONG";
-                codelist.Add("Wrong();");
-                isCorrect = false;
-                break;
-            }
-
-            i++;
-        }
-
-        Playvideo();
-           
-        /*
-        changeText.text = results;
 
         if (isCorrect)
         {
@@ -155,9 +95,70 @@ public class LevelOneProcessM : MonoBehaviour
             if (Panel2 != null)
             {
                 Panel2.SetActive(true);
+                codelist.Clear();
             }
         }
-        */
+    }
+
+
+    public void processlevel()
+    {
+        blocks_t1 = GetActionBlocks_MultiThreads("1");
+        bool isCorrect = false;
+        Path = Application.streamingAssetsPath + "/Level1.json";
+        jsonString = File.ReadAllText(Path);
+        Level1 Yumo = JsonUtility.FromJson<Level1>(jsonString);
+
+
+        string[] rightlist = Yumo.CorrectOrder;
+        List<string> blocks_names_t1 = new List<string>();
+        //string results = "";
+        int i = 0;
+
+
+
+
+        foreach (Transform child in blocks_t1)
+        {
+            if (i == 0)
+            {
+                isCorrect = true;
+            }
+
+            if (i >= rightlist.Length)
+            {
+                //Debug.Log("WRONG");
+                //results = blocks_t1[i].transform.GetComponentInChildren<Text>().text + " WRONG";
+                codelist.Add("Wrong();");
+                isCorrect = false;
+                break;
+            }
+            if (blocks_t1[i].transform.GetComponentInChildren<Text>().text == rightlist[i])
+            {
+
+                //Debug.Log(blocks_t1[i].transform.GetComponentInChildren<Text>().text + "CORRECT");
+                //results = blocks_t1[i].transform.GetComponentInChildren<Text>().text + " CORRECT";
+                codelist.Add(blocks_t1[i].transform.GetComponentInChildren<Text>().text);
+
+            }
+            else
+            {
+               
+               //Debug.Log(blocks_t1[i].transform.GetComponentInChildren<Text>().text + "WRONG");
+                //results =  blocks_t1[i].transform.GetComponentInChildren<Text>().text + " WRONG";
+                codelist.Add("Wrong();");
+                isCorrect = false;
+                break;
+            }
+
+            i++;
+        }
+
+        Playvideo(isCorrect);
+           
+
+
+
     }
 
     private Transform[] GetActionBlocks_MultiThreads(String tabNum)

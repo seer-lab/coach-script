@@ -1,0 +1,17 @@
+{
+    "Name": "Catch Layup",
+    "Level": 3,
+    "CorrectOrder": ["Run();", "Catch();","Dribble();","Pass();","Run();", "Jump();", "Catch();", "Layup();"],
+    "ScreenOrder": ["Pass();", 
+        "Run();", 
+        "Dribble();" ,
+        "Shoot();",
+        "Catch();", 
+        "Catch();",
+        "Dunk();", 
+        "Run();", 
+        "Layup();", 
+        "Jump();"]
+}
+
+

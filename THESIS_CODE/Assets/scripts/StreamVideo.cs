@@ -14,6 +14,8 @@ public class StreamVideo : MonoBehaviour
     public VideoClip clip2;
 
 
+
+
     // Start is called before the first frame update
     public void Playvideo()
     {
@@ -24,6 +26,8 @@ public class StreamVideo : MonoBehaviour
     {
         StartCoroutine(PlayVideo2());
     }
+
+   
 
     IEnumerator PlayVideo()
     {
@@ -56,6 +60,10 @@ public class StreamVideo : MonoBehaviour
         videoPlayer.Play();
         audioSource.Play();
     }
+
+
+
+
 
     // Update is called once per frame
     public void StopVideo()

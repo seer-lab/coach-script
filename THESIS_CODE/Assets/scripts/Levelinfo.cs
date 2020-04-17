@@ -76,10 +76,67 @@ public class Levelinfo : MonoBehaviour
 
     }
 
+    public void getInfo2()
+    {
+        emptyDropZone();
+
+        Path = Application.streamingAssetsPath + "/Level2.json";
+        jsonString = File.ReadAllText(Path);
+        Level1 Yumo = JsonUtility.FromJson<Level1>(jsonString);
+        Debug.Log(Yumo.Name);
+
+        for (int i = 0; i < Yumo.ScreenOrder.Length; i++)
+        {
+            GameObject newInstance = (GameObject)Instantiate(code);
+            newInstance.transform.SetParent(drawerGO.transform);
+
+            newInstance.GetComponentInChildren<Text>().text = Yumo.ScreenOrder[i];
+        }
+
+    }
+
+    public void getInfo3()
+    {
+        emptyDropZone();
+
+        Path = Application.streamingAssetsPath + "/Level3.json";
+        jsonString = File.ReadAllText(Path);
+        Level3 Yumo = JsonUtility.FromJson<Level3>(jsonString);
+        Debug.Log(Yumo.Name);
+
+        for (int i = 0; i < Yumo.ScreenOrder.Length; i++)
+        {
+            GameObject newInstance = (GameObject)Instantiate(code);
+            newInstance.transform.SetParent(drawerGO.transform);
+
+            newInstance.GetComponentInChildren<Text>().text = Yumo.ScreenOrder[i];
+        }
+
+    }
+
+
 }
 
 [System.Serializable]
 public class Level1
+{
+    public string Name;
+    public int Level;
+    public string[] CorrectOrder;
+    public string[] ScreenOrder;
+}
+
+[System.Serializable]
+public class Level2
+{
+    public string Name;
+    public int Level;
+    public string[] CorrectOrder;
+    public string[] ScreenOrder;
+}
+
+[System.Serializable]
+public class Level3
 {
     public string Name;
     public int Level;
