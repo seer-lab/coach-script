@@ -1,4 +1,4 @@
-# coach-script
+# Coach Script
 
 Parsons problem involves providing a user or student with blocks or lines of code, the goal of reordering them to create a specific solution. Information technology is constantly evolving. With newer ideas, fascinating implementations of several software products are rapidly being produced. With all this advancement, interest in learning programming fundamentals is at an all time high and is slowly becoming a necessity. Parsons problems are designed to test a students understanding of programming without the added pressure of creating code from scratch. It is also a useful tool for introducing basic programming concepts to newly aspiring programmers. For this reason, it is important to explore the different implementations of parsons problem; to really understand why it works and how effective it is, as a teaching tool.
 
